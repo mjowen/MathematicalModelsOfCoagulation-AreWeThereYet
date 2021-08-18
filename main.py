@@ -46,7 +46,7 @@ def sumStat(t,thr):
 
 #### Options ####
 # Toggles for running separate parts of the analysis
-plotThr = False;
+plotThr = True;
 runETPCorr = False;
 runRateSA = False;
 runICSA = False;

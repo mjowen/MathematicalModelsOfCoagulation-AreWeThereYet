@@ -113,7 +113,7 @@ def ODESolver(k,y,maxt):
     Outputs: \n
     sol - ODE solution object containing timecourse data of all species
     """
-    sol = solve_ivp(ODE, (0,maxt), y, args=(k, ), method='BDF', rtol=1e-3,atol=1e-14);
+    sol = solve_ivp(ODE, (0,maxt), y, args=(k, ), method='BDF', rtol=1e-4,atol=1e-16);
     return sol
 
 def ODE(t,y,k):

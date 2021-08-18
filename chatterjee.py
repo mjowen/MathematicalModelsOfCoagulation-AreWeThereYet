@@ -161,7 +161,7 @@ def ODESolver(k,c0,maxt):
     """
     global IIaMax
     IIaMax = 0;
-    sol = solve_ivp(ODE, (0,maxt), c0, args=(k, ), method='BDF', rtol=1e-3,atol=1e-14);
+    sol = solve_ivp(ODE, (0,maxt), c0, args=(k, ), method='BDF', rtol=1e-4,atol=1e-16);
     return sol
 
 
