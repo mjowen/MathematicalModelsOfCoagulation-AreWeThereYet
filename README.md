@@ -79,7 +79,7 @@ return (sol.t,sol.y[6])
 
 <!-- LICENSE -->
 ## License
-
+Licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE)
 
 <!-- CONTACT -->
 ## Contact
