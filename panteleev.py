@@ -27,23 +27,25 @@ import numpy as np # The Numpy package is used frequently for this work
 from scipy.integrate import solve_ivp # The solve_ivp method from Scipy is used to simulate the model
 import matplotlib.pyplot as plt # matplotlib is used for plotting the thrombin generation curves in the plotThr method
 
-def setIC(ICvector = np.array([10e-12, 1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9])):
+def setIC(ICvector = np.array([10e-12, 1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9]), includeExtras = False):
     """
-    Converts a list of factor levels into an initial condition vector for the Panteleev model assuming 0 concnetration for all remaining species. \n
+    Converts a list of factor levels into an initial condition vector for the Panteleev model assuming 0 concentration for all remaining species. \n
     Inputs: \n
-    ICvector - List of factor levels in the order TF, II, V, VII, VIIa, VIII, IX, X, XI, AT, TFPI. Leave black for default initial concentrations (10pM of TF) \n
+    ICvector - List of factor levels in the order TF, II, V, VII, VIIa, VIII, IX, X, XI, AT, TFPI. Leave black for default initial concentrations (10pM of TF), \n
+    includeExtras - Boolean variable to determine whether or not the following inhibitors are included in the concentration vector (at their default concentrations): PCI, alpha1-AT, alpha2-M, alpha2-AP, PAI-1 and C1-inh. This variable should match the similar variable in getRates(). Default is False. \n
     Outputs: \n
     IC - Vector of initial conditions for the Panteleev model
     """
     IC = np.zeros(73);
     IC[[2,10,16,4,3,14,6,8,18,19,20]] = ICvector; # Indices correspond to factors in initial condition vector
+    
     return IC
 
-def getRates():
+def getRates(includeExtras = False):
     """
     Get the reaction rates for simulating the Panteleev model. \n
     Inputs: \n
-    None \n
+    includeExtras - Only relevant for Panteleev model. Boolean variable to determine whether or not the following inhibitors are included in the rate vector (at their default concentrations): PCI, alpha1-AT, alpha2-M, alpha2-AP, PAI-1 and C1-inh. This variable should match the similar variable in setIC(). Default is False. \n    
     Outputs: \n
     List of reaction rates
     """
@@ -52,7 +54,10 @@ def getRates():
     K = np.array([210/1e9, 200/1e9, 238/1e9, 230, 1216, 278, 1655, 7200/1e9, 147/1e9, 71.7/1e9, 2.57/1e9, 1.5/1e9, 150/1e9, 0.118/1e9, 200/1e9, 320/1e9, 470/1e9, 2.9/1e9]);
     n = np.array([260, 750, 16000, 2700]);
     h = np.array([0.44*1e9/60, 6*1e9/60, 8.2e-06*1e9/60, 0.00015*1e9/60, 4e-05*1e9/60, 1.36e-05*1e9/60, 0.0012*1e9/60, 2.2e-05*1e9/60, 0.00041*1e9/60, 0.0001*1e9/60, 3e-06*1e9/60, 0.00037*1e9/60, 6.3e-05*1e9/60, 0.35/60, 7.7*1e9/60, 1.9e-05*1e9/60, 2.6e-05*1e9/60, 6e-06*1e9/60, 0.0054*1e9/60, 0.00014*1e9/60, 6e-06*1e9/60, 6e-06*1e9/60, 7e-07*1e9/60, 0.00039*1e9/60]);
-    i = np.array([3000/1e9, 40000/1e9, 975/1e9, 1400/1e9, 79/1e9, 1700/1e9, 323/1e9]);
+    if includeExtras:
+        i = np.array([3250/1e9, 40000/1e9, 950/1e9, 0/1e9, 70/1e9, 2100/1e9, 0/1e9]);
+    else:
+        i = np.array([0, 0, 0, 0, 0, 0, 0]);
     p = np.array([7.5e-5/1e9]);
     k = np.concatenate((k1, km, K, n, h, i, p))
     return k

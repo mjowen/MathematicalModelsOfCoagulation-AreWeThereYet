@@ -77,11 +77,12 @@ import numpy as np # The Numpy package is used frequently for this work
 from scipy.integrate import solve_ivp # The solve_ivp method from Scipy is used to simulate the model
 import matplotlib.pyplot as plt # matplotlib is used for plotting the thrombin generation curves in the plotThr method
 
-def setIC(ICvector = np.array([10e-12, 1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9]), lipid=6.79e-3):
+def setIC(ICvector = np.array([10e-12, 1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9]), lipid=6.79e-3, includeExtras = False):
     """
-    Converts a list of factor levels into an initial condition vector for the Bungay model assuming 0 concnetration for all remaining species. \n
+    Converts a list of factor levels into an initial condition vector for the Bungay model assuming 0 concentration for all remaining species. \n
     Inputs: \n
-    ICvector - List of factor levels in the order TF, II, V, VII, VIIa, VIII, IX, X, XI, AT, TFPI. Leave black for default initial concentrations (10pM of TF) \n
+    ICvector - List of factor levels in the order TF, II, V, VII, VIIa, VIII, IX, X, XI, AT, TFPI. Leave black for default initial concentrations (10pM of TF), \n
+    includeExtras - Boolean variable to determine whether or not the following inhibitors are included in the concentration vector (at their default concentrations): PCI, alpha1-AT, alpha2-M, alpha2-AP, PAI-1 and C1-inh. This variable should match the similar variable in getRates(). Default is False. \n
     Outputs: \n
     IC - Vector of initial conditions for the Bungay model
     """
@@ -89,11 +90,11 @@ def setIC(ICvector = np.array([10e-12, 1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-
     IC[[34,0,4,8,10,12,16,20,51,57,56,72]] = np.append(ICvector,lipid); # np.append adds the concentration of lipids onto the input. Indices correspond to factors in initial condition vector
     return IC
 
-def getRates():
+def getRates(includeExtras = False):
     """
     Get the reaction rates for simulating the Bungay model. \n
     Inputs: \n
-    None \n
+    includeExtras - Only relevant for Panteleev model. Boolean variable to determine whether or not the following inhibitors are included in the rate vector (at their default concentrations): PCI, alpha1-AT, alpha2-M, alpha2-AP, PAI-1 and C1-inh. This variable should match the similar variable in setIC(). Default is False. \n    
     Outputs: \n
     List of reaction rates
     """

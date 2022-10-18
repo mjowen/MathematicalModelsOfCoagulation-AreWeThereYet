@@ -52,21 +52,19 @@ runRateSA = False;
 runICSA = False;
 
 
-#### Load Rates ####
-# Preload the reaction rates for each model
-hockinK = hockin.getRates();
-danforthK = danforth.getRates();
-chatterjeeK = chatterjee.getRates();
-brummelK = brummel.getRates();
-bungayK = bungay.getRates();
-panteleevK = panteleev.getRates();
-tyurinK = tyurin.getRates();
-zhuK = zhu.getRates();
-
 #### Thrombin Generation Plots ####
 # Plot a thrombin generation curve for each model
 if plotThr:
     maxt=1200; # Simulation time in seconds (1200s = 20 min)
+    
+    hockinK = hockin.getRates();
+    danforthK = danforth.getRates();
+    chatterjeeK = chatterjee.getRates();
+    brummelK = brummel.getRates();
+    bungayK = bungay.getRates();
+    panteleevK = panteleev.getRates();
+    tyurinK = tyurin.getRates();
+    zhuK = zhu.getRates();
     
     hockin.plotThr(hockinK,hockin.setIC(),maxt);
     danforth.plotThr(danforthK,danforth.setIC(),maxt);
@@ -81,6 +79,17 @@ if plotThr:
 #### ETP Correlation ####
 # Run the ETP correlation for 15 individuals and plot scatter plots
 if runETPCorr:
+    #### Load Rates ####
+    # Preload the reaction rates for each model
+    hockinK = hockin.getRates(includeExtras = True);
+    danforthK = danforth.getRates(includeExtras = True);
+    chatterjeeK = chatterjee.getRates(includeExtras = True);
+    brummelK = brummel.getRates(includeExtras = True);
+    bungayK = bungay.getRates(includeExtras = True);
+    panteleevK = panteleev.getRates(includeExtras = True);
+    tyurinK = tyurin.getRates(includeExtras = True);
+    zhuK = zhu.getRates(includeExtras = True);
+    
     maxt=1200; # Simulation time in seconds (1200s = 20 min)
     baseIC = np.array([1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9]); #Baseline initial conditions/ factor levels. Order is II, V, VII, VIIa, VIII, IX, X, XI, AT, TFPI
     data = np.genfromtxt('paperData.csv', delimiter=',', skip_header=1); #Extract the patient data from the CSV file
@@ -92,14 +101,14 @@ if runETPCorr:
         # Find donor specific factor levels using baseIC. VIIa is used as 1% of VII
         donorIC = np.array([data[i,2]*1e-12, baseIC[0]*data[i,3]/100, baseIC[1]*data[i,4]/100, baseIC[2]*data[i,5]/100, baseIC[3]*data[i,5]/100, baseIC[4]*data[i,6]/100, baseIC[5]*data[i,7]/100, baseIC[6]*data[i,8]/100, baseIC[7]*data[i,9]/100, baseIC[8]*data[i,10]/100, baseIC[9]*data[i,11]/100]); #TF, II, V, VII, VIIa, VIII, IX, X, XI
         # Convert the donor specific factor levels into the form used for the individual models with 0 for all other concentrtions
-        hockinIC = hockin.setIC(donorIC);
-        danforthIC = danforth.setIC(donorIC);
-        chatterjeeIC = chatterjee.setIC(donorIC);
-        brummelIC = brummel.setIC(donorIC);
-        bungayIC = bungay.setIC(donorIC);
-        panteleevIC = panteleev.setIC(donorIC);
-        tyurinIC = tyurin.setIC(donorIC);
-        zhuIC = zhu.setIC(donorIC);
+        hockinIC = hockin.setIC(donorIC,includeExtras = True);
+        danforthIC = danforth.setIC(donorIC,includeExtras = True);
+        chatterjeeIC = chatterjee.setIC(donorIC,includeExtras = True);
+        brummelIC = brummel.setIC(donorIC,includeExtras = True);
+        bungayIC = bungay.setIC(donorIC,includeExtras = True);
+        panteleevIC = panteleev.setIC(donorIC,includeExtras = True);
+        tyurinIC = tyurin.setIC(donorIC,includeExtras = True);
+        zhuIC = zhu.setIC(donorIC,includeExtras = True);
         
         # Simulate each model using the getThr function. Extract ETP and store in the etp array
         (t,thr) = hockin.getThr(hockinK, hockinIC, maxt);
@@ -136,14 +145,14 @@ if runETPCorr:
         
         # Repeat the same process with 5pM of added TF
         donorIC[0] += 5e-12;
-        hockinIC = hockin.setIC(donorIC);
-        danforthIC = danforth.setIC(donorIC);
-        chatterjeeIC = chatterjee.setIC(donorIC);
-        brummelIC = brummel.setIC(donorIC);
-        bungayIC = bungay.setIC(donorIC);
-        panteleevIC = panteleev.setIC(donorIC);
-        tyurinIC = tyurin.setIC(donorIC);
-        zhuIC = zhu.setIC(donorIC);
+        hockinIC = hockin.setIC(donorIC,includeExtras = True);
+        danforthIC = danforth.setIC(donorIC,includeExtras = True);
+        chatterjeeIC = chatterjee.setIC(donorIC,includeExtras = True);
+        brummelIC = brummel.setIC(donorIC,includeExtras = True);
+        bungayIC = bungay.setIC(donorIC,includeExtras = True);
+        panteleevIC = panteleev.setIC(donorIC,includeExtras = True);
+        tyurinIC = tyurin.setIC(donorIC,includeExtras = True);
+        zhuIC = zhu.setIC(donorIC,includeExtras = True);
         
         (t,thr) = hockin.getThr(hockinK, hockinIC, maxt);
         sums = sumStat(t, thr);
