@@ -173,7 +173,7 @@ def ODE(t,y,k):
     
     # TF:VIIa:Xa + TFPI -> TF:VIIa:Xa:TFPI
     rate = h[1]*XaVIIaTF*y[20];
-    dy[[0,20]] += [-rate, rate];
+    dy[[0,20]] += [-rate, -rate];
     
     # IX + TF:VIIaF -> IXa + TF:VIIa
     rate = k[3]/K[0]*y[6]*VIIaTFF;
@@ -193,7 +193,7 @@ def ODE(t,y,k):
     
     # XaF + AT -> Xa:AT
     rate = h[3]*XaF*y[19];
-    dy[[7,19]] += [-rate, rate];
+    dy[[7,19]] += [-rate, -rate];
     
     # XaF + a2M -> Xai + a2M
     rate = h[4]*XaF*i[0];
@@ -267,7 +267,7 @@ def ODE(t,y,k):
     rate = h[17]*y[17]*i[1];
     dy[17] -= rate;
     
-    # XIa + PCI -> XIai + a2AP
+    # XIa + PCI -> XIai + PCI
     rate = h[18]*y[17]*i[4];
     dy[17] -= rate;
     
