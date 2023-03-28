@@ -1,10 +1,10 @@
-# MathematicalModelsOfThrombinGeneration-AreWeThereYet
- Supplemental Python code for "Mathematical models of thrombin generation - are we there yet?"
+# Mathematical Models Of Coagulation - Are We There Yet?
+ Supplemental Python code for "Mathematical models of coagulation - are we there yet?"
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This project contains the supplemental Python code for "Mathematical models of thrombin generation - are we there yet?". This Python code (written in Python ver. 3.7.9) is a translation from the original Matlab code used for the paper. It has the ability to both run the 8 models used for the paper and to run the correlational and both sensitivity analysis methods introduced and used in the paper.
+This project contains the supplemental Python code for "Mathematical models of coagulation - are we there yet?". This Python code (written in Python ver. 3.7.9) is a translation from the original Matlab code used for the paper. It has the ability to both run the 8 models used for the paper and to run the correlational and both sensitivity analysis methods introduced and used in the paper.
 
 
 
@@ -103,5 +103,5 @@ Licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE)
 
 Matt J. Owen - matthew.owen@nottingham.ac.uk
 
-Project Link: [https://github.com/mjowen/MathematicalModelsOfThrombinGeneration-AreWeThereYet](https://github.com/mjowen/MathematicalModelsOfThrombinGeneration-AreWeThereYet)
+Project Link: [https://github.com/mjowen/MathematicalModelsOfCoagulation-AreWeThereYet](https://github.com/mjowen/MathematicalModelsOfCoagulation-AreWeThereYet)
 
