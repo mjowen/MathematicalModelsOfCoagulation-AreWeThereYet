@@ -19,12 +19,12 @@ This code is written and tested in Python ver. 3.7.9 however any Python version 
 There are 2 methods for downloading the project.
 1. Clone the repo
    ```sh
-   git clone https://github.com/mjowen/MathematicalModelsOfThrombinGeneration-AreWeThereYet.git
+   git clone https://github.com/mjowen/MathematicalModelsOfCoagulation-AreWeThereYet.git
    ```
 2. Download as ZIP
-    - Visit [https://github.com/mjowen/MathematicalModelsOfThrombinGeneration-AreWeThereYet](https://github.com/mjowen/MathematicalModelsOfThrombinGeneration-AreWeThereYet)
+    - Visit [https://github.com/mjowen/MathematicalModelsOfCoagulation-AreWeThereYet](https://github.com/mjowen/MathematicalModelsOfCoagulation-AreWeThereYet)
     - Click Code -> Download ZIP
-    - Unzip and set the folder "MathematicalModelsOfThrombinGeneration-AreWeThereYet-main" as the working directory in Python
+    - Unzip and set the folder "MathematicalModelsOfCoagulation-AreWeThereYet-main" as the working directory in Python
 
 
 <!-- USAGE EXAMPLES -->
