@@ -13,7 +13,7 @@ This project contains the supplemental Python code for "Mathematical models of c
 To use this code follow the installation steps below.
 
 ### Prerequisites and Version Numbers
-This code is written and tested in Python ver. 3.7.9 however any Python version (not including Python 2 or earlier) should be suitable. In addition to this Numpy (ver. 1.19.3), Scipy (ver. 1.7.0) and Matplotlib (ver 3.4.2) are also used throughout this project.
+This code is written and tested in Python ver. 3.7.9. In addition to this Numpy (ver. 1.19.3), Scipy (ver. 1.7.0) and Matplotlib (ver 3.4.2) are also used throughout this project.
 
 ### Installation
 There are 2 methods for downloading the project.
@@ -61,7 +61,7 @@ Below is an example for solving the Hockin model for 15pM of TF (rather than the
 ```python
 import numpy as np
 import hockin
-y = hockin.setIC(np.array([15e-12, 1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9]));
+y = hockin.setIC(np.array([15e-12, 1.4e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.4e-6, 2.5e-9]));
 k = hockin.getRates();
 k[1] = k[1]*2;
 hockin.plotThr(k,y,1200)
@@ -101,7 +101,7 @@ Licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE)
 <!-- CONTACT -->
 ## Contact
 
-Matt J. Owen - matthew.owen@nottingham.ac.uk
+Matt J. Owen - matt.owen@nottingham.ac.uk - https://orcid.org/0000-0003-1430-5473
 
 Project Link: [https://github.com/mjowen/MathematicalModelsOfCoagulation-AreWeThereYet](https://github.com/mjowen/MathematicalModelsOfCoagulation-AreWeThereYet)
 
