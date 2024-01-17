@@ -263,7 +263,6 @@ def ODE(t,y,k):
     dy[[32,33]] += [-rate, rate];
     lipidChange += rate;
     
-    dy[72] -= nva*lipidChange;
     
     # TF + VIIa <-> TF:VIIa
     rate=(k[0]*y[34]*y[11]-k[1]*y[35]);
@@ -364,6 +363,8 @@ def ODE(t,y,k):
     # Xa:Va:mIIa -> Xa:Va + IIa
     rate=k[37]*y[50];
     dy[[50,42,46]] += [-rate, rate, rate];
+    # Release lipid from the above reaction since IIa is not lipid bound
+    lipidChange -= rate;
     
     # VII + Xa <-> VII:Xa
     rate=(k[38]*y[9]*y[23]-k[39]*y[64]);
@@ -460,6 +461,8 @@ def ODE(t,y,k):
     # XIa:IX -> XIa + IXa
     rate=k[73]*y[71];
     dy[[71,19,53]] += [-rate, rate, rate];
+    
+    dy[72] -= nva*lipidChange;
     
     return dy
 
