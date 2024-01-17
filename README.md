@@ -79,24 +79,11 @@ return (sol.t,sol.y[6])
 
 <!-- LICENSE -->
 ## License
-Licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE)
+Licensed under the [3-Clause BSD License](LICENSE)
     
-    Copyright (C) 2021  Matthew John Owen
-    
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+Copyright (C) 2023  Matt J. Owen
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-    
-
+This project was previously released under a GPL v3 license. 
 
 <!-- CONTACT -->
 ## Contact
