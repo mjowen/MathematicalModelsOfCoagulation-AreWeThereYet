@@ -91,7 +91,7 @@ if runETPCorr:
     zhuK = zhu.getRates(includeExtras = True);
     
     maxt=1200; # Simulation time in seconds (1200s = 20 min)
-    baseIC = np.array([1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9]); #Baseline initial conditions/ factor levels. Order is II, V, VII, VIIa, VIII, IX, X, XI, AT, TFPI
+    baseIC = np.array([1.4e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.4e-6, 2.5e-9]); #Baseline initial conditions/ factor levels. Order is II, V, VII, VIIa, VIII, IX, X, XI, AT, TFPI
     data = np.genfromtxt('paperData.csv', delimiter=',', skip_header=1); #Extract the patient data from the CSV file
     # Patient data is extracted as data[patient row index, factor/ETP column index]   row then column (person then data type)
     # Columns are ordered as ETP % (+TF), ETP % (-TF), TF (pM), II (%), V (%), VII (%), VIII (%), IX (%), X (%), XI (%), AT (%), TFPI (%)
@@ -240,7 +240,7 @@ if runICSA:
     Sy = np.zeros(len(factorNames)); # Vector for storing sensitivities
     for i in range(len(factorNames)):
         for j in range(parMult.size):
-            newY = np.array([10e-12, 1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9]); # Set baseline concentrations
+            newY = np.array([10e-12, 1.4e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.4e-6, 2.5e-9]); # Set baseline concentrations
             newY[i] = newY[i]*parMult[j]; # Scale ith initial concentration
             newY = modelSA.setIC(newY); # Convert scaled initial concentration vector to correct form for model simulation
             (t,thr) = modelSA.getThr(k, newY, maxt); #Simulate model and ...

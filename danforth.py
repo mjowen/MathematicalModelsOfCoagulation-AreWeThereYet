@@ -37,7 +37,7 @@ import numpy as np # The Numpy package is used frequently for this work
 from scipy.integrate import solve_ivp # The solve_ivp method from Scipy is used to simulate the model
 import matplotlib.pyplot as plt # matplotlib is used for plotting the thrombin generation curves in the plotThr method
 
-def setIC(ICvector = np.array([10e-12, 1.45e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.45e-6, 2.5e-9]), includeExtras = False):
+def setIC(ICvector = np.array([10e-12, 1.4e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.4e-6, 2.5e-9]), includeExtras = False):
     """
     Converts a list of factor levels into an initial condition vector for the Danforth model assuming 0 concentration for all remaining species. \n
     Inputs: \n
