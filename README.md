@@ -81,7 +81,7 @@ return (sol.t,sol.y[6])
 ## License
 Licensed under the [3-Clause BSD License](LICENSE)
     
-Copyright (C) 2023  Matt J. Owen
+Copyright (C) 2024  Matt J. Owen
 
 This project was previously released under a GPL v3 license. 
 
