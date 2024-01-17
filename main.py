@@ -11,7 +11,7 @@ import brummel
 import bungay
 import panteleev
 import tyurin
-import zhu
+import lakshmanan
 
 #### Function Definitions ####
 def sumStat(t,thr):
@@ -64,7 +64,7 @@ if plotThr:
     bungayK = bungay.getRates();
     panteleevK = panteleev.getRates();
     tyurinK = tyurin.getRates();
-    zhuK = zhu.getRates();
+    lakshmananK = lakshmanan.getRates();
     
     hockin.plotThr(hockinK,hockin.setIC(),maxt);
     danforth.plotThr(danforthK,danforth.setIC(),maxt);
@@ -73,7 +73,7 @@ if plotThr:
     bungay.plotThr(bungayK,bungay.setIC(),maxt);
     panteleev.plotThr(panteleevK,panteleev.setIC(),maxt);
     tyurin.plotThr(tyurinK,tyurin.setIC(),maxt);
-    zhu.plotThr(zhuK,zhu.setIC(),maxt);
+    lakshmanan.plotThr(lakshmananK,lakshmanan.setIC(),maxt);
 
 
 #### ETP Correlation ####
@@ -88,7 +88,7 @@ if runETPCorr:
     bungayK = bungay.getRates(includeExtras = True);
     panteleevK = panteleev.getRates(includeExtras = True);
     tyurinK = tyurin.getRates(includeExtras = True);
-    zhuK = zhu.getRates(includeExtras = True);
+    lakshmananK = lakshmanan.getRates(includeExtras = True);
     
     maxt=1200; # Simulation time in seconds (1200s = 20 min)
     baseIC = np.array([1.4e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8, 1.6e-7, 3e-8, 3.4e-6, 2.5e-9]); #Baseline initial conditions/ factor levels. Order is II, V, VII, VIIa, VIII, IX, X, XI, AT, TFPI
@@ -108,7 +108,7 @@ if runETPCorr:
         bungayIC = bungay.setIC(donorIC,includeExtras = True);
         panteleevIC = panteleev.setIC(donorIC,includeExtras = True);
         tyurinIC = tyurin.setIC(donorIC,includeExtras = True);
-        zhuIC = zhu.setIC(donorIC,includeExtras = True);
+        lakshmananIC = lakshmanan.setIC(donorIC,includeExtras = True);
         
         # Simulate each model using the getThr function. Extract ETP and store in the etp array
         (t,thr) = hockin.getThr(hockinK, hockinIC, maxt);
@@ -139,7 +139,7 @@ if runETPCorr:
         sums = sumStat(t, thr);
         etp[i,6,0] = sums[0];
         
-        (t,thr) = zhu.getThr(zhuK, zhuIC, maxt);
+        (t,thr) = lakshmanan.getThr(lakshmananK, lakshmananIC, maxt);
         sums = sumStat(t, thr);
         etp[i,7,0] = sums[0];
         
@@ -152,7 +152,7 @@ if runETPCorr:
         bungayIC = bungay.setIC(donorIC,includeExtras = True);
         panteleevIC = panteleev.setIC(donorIC,includeExtras = True);
         tyurinIC = tyurin.setIC(donorIC,includeExtras = True);
-        zhuIC = zhu.setIC(donorIC,includeExtras = True);
+        lakshmananIC = lakshmanan.setIC(donorIC,includeExtras = True);
         
         (t,thr) = hockin.getThr(hockinK, hockinIC, maxt);
         sums = sumStat(t, thr);
@@ -182,7 +182,7 @@ if runETPCorr:
         sums = sumStat(t, thr);
         etp[i,6,1] = sums[0];
         
-        (t,thr) = zhu.getThr(zhuK, zhuIC, maxt);
+        (t,thr) = lakshmanan.getThr(lakshmananK, lakshmananIC, maxt);
         sums = sumStat(t, thr);
         etp[i,7,1] = sums[0];
         
@@ -190,7 +190,7 @@ if runETPCorr:
         print("Completed donor "+str(i+1)+" of 15")
     
     # Plot ETP Correlation scatter plots
-    modelNames = ["Hockin","Danforth","Chatterjee","Brummel","Bungay","Panteleev","Tyurin","Zhu"];
+    modelNames = ["Hockin","Danforth","Chatterjee","Brummel","Bungay","Panteleev","Tyurin","Lakshmanan"];
     for i in range(len(modelNames)):
         plt.scatter(etp[:,i,:], data[:,[1,0]]);
         plt.title(modelNames[i]);
