@@ -52,7 +52,7 @@ def setIC(ICvector = np.array([10e-12, 1.4e-6, 2e-8, 1e-8, 1e-8/100, 7e-10, 9e-8
     IC = np.zeros(37);
     IC[[0,17,7,3,2,14,12,5,10,24,22]] = ICvector; # Indices correspond to factors in initial condition vector
     if includeExtras:
-        IC[[26, 28, 27, 25, 34]] = [4e-5, 3.25e-6, 9.5e-7, 4.6e-10, 2.1e-6];
+        IC[[26, 28, 27, 25, 34]] = [4e-5, 3e-6, 9.75e-7, 4.6e-10, 1.7e-6]; #a1AT, a2M, a2AP, PAI1, C1-inh
     return IC
 
 def getRates(includeExtras = False):
